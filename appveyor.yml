@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Test against the latest version of this Node.js version
 environment:
   nodejs_version: "7"
@@ -16,6 +17,29 @@ test_script:
   - npm --version
   # run tests
   - npm test
+=======
+# Test against this version of Node.js
+environment:
+	matrix:
+	# node.js
+	- nodejs_version: "7"
+
+#Install scripts. (runs after repo cloning)
+install:
+	#Get the latest stable version of Node.js or io.js
+	- ps: Install-Product node $env:nodejs_version
+	$install modules
+	- npm install
+
+#Post-install test scripts
+test_script:
+
+	#Output useful info for debugging.
+	- node --version
+	- npm --version
+	# run tests
+	- npm test
+>>>>>>> 9bc7490f072caaee16e49f43ac24809c52f494d9
 
 # Don't actually build.
 build: off
